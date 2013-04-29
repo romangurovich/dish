@@ -1,0 +1,10 @@
+<p class="lead">My Own Feedback Requests</p>
+<ul>
+<% sent_feedback_requests.each(function (sent_feedback_request) { %>
+	<li class="well">
+		<a href="<%= #/feedback_requests/sent_feedback_request.id %>">
+			<%= sent_feedback_request.get('body') %>
+		</a>
+	</li>
+<% }); %>
+</ul>

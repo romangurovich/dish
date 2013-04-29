@@ -4,5 +4,7 @@ class Team < ActiveRecord::Base
   has_many :memberships
   has_many :members, through: :memberships
 
-  belongs_to :owner, class_name "User"
+  has_many :received_feedback_requests, class_name: "FeedbackRequest"
+
+  belongs_to :owner, class_name: "User"
 end

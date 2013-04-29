@@ -1,13 +1,13 @@
 class CreateVotes < ActiveRecord::Migration
   def change
     create_table :votes do |t|
-      t.integer :voter_id
-      t.integer :comment_id
-      t.boolean :positive
+      t.integer :voter_id, null: false
+      t.integer :solicited_feedback_id, null: false
+      t.boolean :positive, default: true
 
       t.timestamps
     end
 
-    add_index :votes, [:voter_id, :comment_id], unique: true
+    add_index :votes, [:voter_id, :solicited_feedback_id], unique: true
   end
 end
