@@ -1,12 +1,31 @@
 <div class="row">
-	<div class="span2">
-		<div class="row">
-			<div id="nav-pane"></div>
-		</div>
-		<div class="row">
-			<div id="teams-pane"></div>
-		</div>
-	<div>
-	<div id="main-pane" class="span8"></div>
-	<div id="requests-pane" class="span2"></div>
+	<div id="nav-pane" class="span2">nav</div>
+	<div id="main-pane" class="span8">main</div>
+	<div id="requests-pane" class="span2">requests</div>
 </div>
+<div class="row">
+	<div id="teams-pane" class="span2">teams</div>
+</div>
+
+<script>
+$(document).ready(function(){
+  var b = <%= current_user.to_json.html_safe %>
+  console.log(b);
+
+
+  var c = <%= current_user.owned_teams.to_json.html_safe %>
+  console.log(c);
+
+  Dish.initialize({
+    $nav: $('#nav-pane'),
+    $teams: $('#teams-pane'),
+    $content: $('#main-pane'),
+    $requests: $('#requests-pane'),
+
+    userData: <%= current_user.to_json.html_safe %>,
+    teamsData: <%= current_user.owned_teams.to_json.html_safe %>,
+    receivedFeedbackRequestsData: <%= current_user.received_feedback_requests.to_json.html_safe %>,
+    sentFeedbackRequestsData: <%= current_user.sent_feedback_requests.to_json.html_safe %>
+  });
+});
+</script>

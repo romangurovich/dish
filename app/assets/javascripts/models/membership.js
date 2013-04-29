@@ -1,4 +1,4 @@
-Dish.Models.Membership = Backbone.RelationalModel.extend ({
+Dish.Models.Membership = Backbone.RelationalModel.extend({
 
 
 });

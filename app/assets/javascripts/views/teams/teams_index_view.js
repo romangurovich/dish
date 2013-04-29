@@ -1,7 +1,7 @@
 Dish.Views.TeamsIndexView = Backbone.View.extend({
 	initialize: function(args){
-		args = args || {}
-		_(this).extend(args)
+		args = args || {};
+		_(this).extend(args);
 	},
 	
 	render: function() {

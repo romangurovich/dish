@@ -1,4 +1,4 @@
-Dish.Views.TeamsIndex = Backbone.View.extend({
+Dish.Views.NavPaneView = Backbone.View.extend({
 	render: function() {
 		var that = this;
 

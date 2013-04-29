@@ -1,0 +1,10 @@
+<p class="small">Dish on these:</p>
+<ul>
+<% receivedFeedbackRequests.each(function (receivedFeedbackRequest) { %>
+  <li class="well">
+    <a href="#/feedback_requests/" + <%= receivedFeedbackRequest.id %>>
+      <%= receivedFeedbackRequest.get('body') %>
+    </a>
+  </li>
+<% }); %>
+</ul>

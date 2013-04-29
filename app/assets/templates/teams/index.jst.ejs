@@ -1,8 +1,8 @@
 <p class="lead">My Teams</p>
 <ul>
 <% teams.each(function (team) { %>
-	<li>
-		<a href="<%= #/teams/team.id %>"><%= team.get('name') %></a>
-	</li>
+  <li>
+    <a href="#/teams/"+<%= team.id %>><%= team.get('name') %></a>
+  </li>
 <% }); %>
 </ul>

@@ -1,8 +1,8 @@
 Dish.Models.Team = Backbone.RelationalModel.extend({
 	relations: [{
-		type: 'hasMany',
+		type: 'HasMany',
 		key: 'members',
-		relatedModel: 'Dish.Models.User',
+		relatedModel: 'Dish.Models.Membership',
 		reverseRelation: {
 			key: 'team'
 		}

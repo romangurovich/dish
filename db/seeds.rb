@@ -20,15 +20,18 @@ ActiveRecord::Base.transaction do
 
 	t1 = u1.owned_teams.create!(name: "School Friends", description: "For questions about mundane stuff");
 	t2 = u1.owned_teams.create!(name: "Business Associates", description: "For questions about work");
+	t3 = u2.owned_teams.create!(name: "School Friends", description: "Come on, you guys");
 
 	t1.members << [u2, u3, u4, u5]
 	t2.members << [u6, u7, u8, u9]
+	t3.members << [u1, u5, u6, u7, u8, u9]
 
 
 
 	fr1 = u1.sent_feedback_requests.create!(body: "How is my breath?", team_id: t1.id)
 	fr2 = u1.sent_feedback_requests.create!(body: "Do I have cooties?", team_id: t1.id)
 	fr3 = u1.sent_feedback_requests.create!(body: "Do I write enough specs?", team_id: t2.id)
+	fr4 = u2.sent_feedback_requests.create!(body: "How many cheesy poofs should I eat per week!?", team_id: t3.id)
 
 	uf1 = u1.sent_unsolicited_feedbacks.create!(body: "You're getting big boned", recipient_id: u2.id)
 	uf2 = u1.sent_unsolicited_feedbacks.create!(body: "Your house is too cold", recipient_id: u7.id)
