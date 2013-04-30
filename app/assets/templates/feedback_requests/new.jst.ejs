@@ -1,0 +1,13 @@
+<div class="feedback-request-form"
+  <label for="feedback_request_body">So...</label>
+  <textarea class="monster" id="feedback_request_body" name="feedback_request[body]">What's on your mind?</textarea>
+  <div class="slider">
+    <label for="feedback_request_team">Who are we asking?</label>
+    <select class=feedback_request[team_id] id="feedback_request_team_id">
+      <% teams.each(function(team) { %>
+        <option value="<%= team.get('id') %>"><%= team.get('name') %></option>
+      <% }); %>
+    </select>
+    <button class="submit btn btn-inverse">Submit Feedback Request</button>
+  </div>
+</div>

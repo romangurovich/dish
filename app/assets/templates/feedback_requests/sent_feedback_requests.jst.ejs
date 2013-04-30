@@ -1,8 +1,8 @@
 <p class="lead">My Own Feedback Requests</p>
-<ul>
+<ul class="spotless">
 <% sentFeedbackRequests.each(function (sentFeedbackRequest) { %>
-	<li class="well">
-		<a href="#/feedback_requests/" + <%= sentFeedbackRequest.id %>>
+	<li class="well lead">
+    <a href="#/feedback_requests/" + <%= sentFeedbackRequest.id %>>
 			<%= sentFeedbackRequest.get('body') %>
 		</a>
 	</li>

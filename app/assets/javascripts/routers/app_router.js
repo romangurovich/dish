@@ -27,9 +27,16 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 			collection: that.receivedFeedbackRequests
 		});
 
+		var newFeedbackRequestView = new Dish.Views.NewFeedbackRequestView ({
+			collection: that.sentFeedbackRequests,
+			currentUser: that.user,
+			teams: that.teams
+		});
+
 	
 		that.$teams.html(teamsIndexView.render().el);
 		that.$content.html(sentFeedbackRequestsView.render().el);
+		that.$content.prepend(newFeedbackRequestView.render().el);
 		that.$requests.html(receivedFeedbackRequestsView.render().el);
 	} 
 

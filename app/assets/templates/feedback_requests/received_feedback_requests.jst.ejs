@@ -2,6 +2,7 @@
 <ul>
 <% receivedFeedbackRequests.each(function (receivedFeedbackRequest) { %>
   <li class="well">
+    <%= receivedFeedbackRequest.get('requestor').get('username') %> says
     <a href="#/feedback_requests/" + <%= receivedFeedbackRequest.id %>>
       <%= receivedFeedbackRequest.get('body') %>
     </a>

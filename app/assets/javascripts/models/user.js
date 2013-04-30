@@ -15,5 +15,25 @@ Dish.Models.User = Backbone.RelationalModel.extend({
 		reverseRelation: {
 			key: 'owner'
 		}
-	}]
+	},
+	{
+		type: 'HasMany',
+		key: 'sentFeedbackRequests',
+		relatedModel: 'Dish.Models.FeedbackRequest',
+		collectionType: 'Dish.Collections.FeedbackRequests',
+		reverseRelation: {
+			keySource: 'requestor_id',
+			key: 'requestor',
+			includeInJSON: 'id'
+		}
+	},
+	{
+		type: 'HasMany',
+		key: 'receivedFeedbackRequests',
+		relatedModel: 'Dish.Models.Team',
+		reverseRelation: {
+			key: 'answerer'
+		}
+	}
+	]
 });

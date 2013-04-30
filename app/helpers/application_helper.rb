@@ -1,14 +1,13 @@
 module ApplicationHelper
 	def make_header
 		html = ""
-		html << "<div class='row'>"
-		html << "<div class='span12'>"
-		html << "<div class='page-header'>"
+		html << "<div class='navbar navbar-fixed-top dish-header'>"
+		html << "<div class='navbar-inner'>"
 		html << "<h1>DISH.IO</h1>"
-		html << "<div class='search'>"
+		html << "<div class='search pull-left'>"
 		html << "<input type=text name=user[full_name]>"
 		html << "Search for people you trust"
-		html << "</input></div></div>"
+		html << "</input></div>"
 		html << make_login_toggle
 		html << "</div></div>"
 		html.html_safe
@@ -17,7 +16,7 @@ module ApplicationHelper
 
 	def make_login_toggle
 		html = ""
-		html << "<div class= 'log_in_toggle'>"
+		html << "<div class= 'log_in_toggle pull-right'>"
 
 		if logged_in?
 			html << (link_to current_user.username, user_path(current_user), class: "black")

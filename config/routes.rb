@@ -6,8 +6,9 @@ Dish::Application.routes.draw do
   end
 
   resources :teams
-  resources :posts
-  resources :comments
+  resources :feedback_requests
+  resources :solicited_feedbacks
+  resources :unsolicited_feedbacks
 
   resource :session, only: [:create, :destroy, :new]
 

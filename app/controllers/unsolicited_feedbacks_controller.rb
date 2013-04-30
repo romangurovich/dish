@@ -1,0 +1,2 @@
+class UnsolicitedFeedbacksController < ApplicationController
+end

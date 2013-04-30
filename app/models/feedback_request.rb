@@ -5,4 +5,8 @@ class FeedbackRequest < ActiveRecord::Base
   belongs_to :team
 
   has_many :solicited_feedbacks
+
+  def as_json(options = nil)
+    super({include: {:requestor => {:only => :username }}}.merge(options || {}))
+  end
 end
