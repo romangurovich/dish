@@ -1,0 +1,10 @@
+<p class="lead">Here's what people think of you</p>
+<ul class="spotless">
+<% receivedFeedbacks.each(function (feedback) { %>
+  <li class="well lead">
+    <a href="<%= '#/messages/' + feedback.id %>">
+      <%= feedback.get('body') %>
+    </a>
+  </li>
+<% }); %>
+</ul>

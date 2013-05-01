@@ -1,5 +1,5 @@
 class SolicitedFeedbacksController < ApplicationController
-   def index
+  def index
     @solicited_feedbacks = SolicitedFeedback.where("feedback_request_id = ?", params[:feedback_request_id])
     render json: @solicited_feedbacks
   end

@@ -29,7 +29,7 @@ Dish.Views.NewFeedbackRequestView = Backbone.View.extend({
 
   reset: function(){
    var that = this;
-   if(that.$('textarea#feedback_request_body').val() == ""){
+   if(that.$('textarea#feedback_request_body').val() === ""){
       that.$('textarea#feedback_request_body').text("What's on your mind?").removeClass("editing").blur();
       $('.slider').slideUp();
     }

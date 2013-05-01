@@ -34,6 +34,29 @@ Dish.Models.User = Backbone.RelationalModel.extend({
 		reverseRelation: {
 			key: 'answerer'
 		}
-	}
-	]
+	},
+	{
+		type: 'HasMany',
+		key: 'receivedUnsolicitedFeedbacks',
+		relatedModel: 'Dish.Models.UnsolicitedFeedback',
+		collectionType: 'Dish.Collections.UnsolicitedFeedbacks',
+		reverseRelation: {
+			key: 'recipient'
+		},
+		collectionOptions: function(user) {
+      return { userId: user.id };
+    }
+	},
+	{
+		type: 'HasMany',
+		key: 'sentUnsolicitedFeedbacks',
+		relatedModel: 'Dish.Models.UnsolicitedFeedback',
+		collectionType: 'Dish.Collections.UnsolicitedFeedbacks',
+		reverseRelation: {
+			key: 'author'
+		},
+		collectionOptions: function(user) {
+      return { userId: user.id };
+    }
+	}]
 });

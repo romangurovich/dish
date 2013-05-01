@@ -1,5 +1,0 @@
-Dish.Collections.UnsolicitedFeedbacks = Backbone.Collection.extend({
-
-  model: Dish.Models.UnsolicitedFeedback
-
-});

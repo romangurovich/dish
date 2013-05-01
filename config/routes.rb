@@ -2,6 +2,7 @@ Dish::Application.routes.draw do
   
   root to: 'home#index'
   resources :users do
+    resources :unsolicited_feedbacks, only: [:index, :create, :new]
     resources :votes, only: [:create, :new]
   end
 

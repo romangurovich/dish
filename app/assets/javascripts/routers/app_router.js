@@ -1,7 +1,8 @@
 Dish.Routers.AppRouter = Backbone.Router.extend({
 	routes: {
 		"": "index",
-		"feedback_requests/:id" : "showFeedbackRequest"
+		"feedback_requests/:id" : "showFeedbackRequest",
+		"messages": "unsolicitedFeedbacksIndex"
 		// "users": "trustedUsers",
 		// "users/:id": "userProfile",
 		// "feedbacks": "sentFeedbacks",
@@ -58,6 +59,20 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 				that.$content.html(showFeedbackRequestView.render().el);
 			}
 		});	
+	},
+
+	unsolicitedFeedbacksIndex: function(){
+		var that = this;
+
+		var unsolicitedFeedbacks = that.user.get("receivedUnsolicitedFeedbacks");
+		unsolicitedFeedbacks.fetch({
+			success: function(){
+				var unsolicitedFeedbacksView = new Dish.Views.UnsolicitedFeedbacksView ({
+					collection: unsolicitedFeedbacks
+				});
+				that.$content.html(unsolicitedFeedbacksView.render().el);
+			}
+		});		
 	}
 
 });

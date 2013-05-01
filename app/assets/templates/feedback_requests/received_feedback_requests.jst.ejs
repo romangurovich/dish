@@ -1,9 +1,9 @@
 <p class="small">Dish on these:</p>
-<ul>
+<ul class="spotless">
 <% receivedFeedbackRequests.each(function (receivedFeedbackRequest) { %>
   <li class="well">
     <%= receivedFeedbackRequest.get('requestor').get('username') %> says
-    <a href="#/feedback_requests/" + <%= receivedFeedbackRequest.id %>>
+    <a href="<%= '#/feedback_requests/' + receivedFeedbackRequest.id %>">
       <%= receivedFeedbackRequest.get('body') %>
     </a>
   </li>
