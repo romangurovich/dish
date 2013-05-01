@@ -2,8 +2,7 @@ Dish.Views.SentFeedbackRequestsView = Backbone.View.extend({
 	initialize: function(args){
 		args = args || {};
 		_(this).extend(args);
-		var that = this;
-		that.listenTo(that.collection, 'all', that.render);
+		this.listenTo(this.collection, 'all', this.render);
 	},
 
 	render: function() {

@@ -41,12 +41,23 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 		that.$requests.html(receivedFeedbackRequestsView.render().el);
 	},
 
-	showFeedbackRequest: function(){
-		
-		var feedbackRequest = 
-		var showFeedbackRequestView = new Dish.Views.ShowFeedbackRequestView ({
-			collection: that.receivedFeedbackRequests
-		});
+	showFeedbackRequest: function(id){
+		var that = this;
+
+		var feedbackRequest = that.sentFeedbackRequests.get(id);
+		var receivedFeedbacks = feedbackRequest.get('solicitedFeedbacks');
+		receivedFeedbacks.fetch({
+			success: function(){
+				console.log(receivedFeedbacks.models); 
+
+				var showFeedbackRequestView = new Dish.Views.ShowFeedbackRequestView ({
+					collection: receivedFeedbacks,
+					model: feedbackRequest
+				});
+
+				that.$content.html(showFeedbackRequestView.render().el);
+			}
+		});	
 	}
 
 });

@@ -48,6 +48,6 @@ Dish.Views.NewFeedbackRequestView = Backbone.View.extend({
     feedbackRequest.save();
     that.$('textarea#feedback_request_body').val("");
     that.reset();
-    Backbone.history.navigate("#/");
+    Backbone.history.navigate("/#");
   }
 });
