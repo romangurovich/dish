@@ -2,7 +2,7 @@
 <ul class="spotless">
 <% sentFeedbackRequests.each(function (sentFeedbackRequest) { %>
 	<li class="well lead">
-    <a href="#/feedback_requests/" + <%= sentFeedbackRequest.id %>>
+    <a href="<%= '#/feedback_requests/' + sentFeedbackRequest.id %>">
 			<%= sentFeedbackRequest.get('body') %>
 		</a>
 	</li>

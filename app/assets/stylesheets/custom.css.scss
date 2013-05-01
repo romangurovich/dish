@@ -1,5 +1,15 @@
 @import 'bootstrap';
 
+body {
+  background: url(ps_neutral.png);
+}
+
+.container {
+  background: white;
+  padding: 0 20px;
+  padding-top: 180px;
+}
+
 .black {
 	color: black;
 }
@@ -10,12 +20,11 @@ ul.spotless {
   margin: 0px;
   li {
     postion: relative;
-    left: 0px;
   }
 }
 
-.container {
-  padding-top: 180px;
+.submit {
+  float:right;
 }
 
 .monster {
@@ -43,11 +52,18 @@ ul.spotless {
     font-size: 22px;
     font-weight: regular;
     text-align: left;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .slider {
   display:none;
   width: 100%;
   margin-bottom: 40px;
+}
+
+textarea {
+  resize: vertical;
+  max-height: 200px;
+  min-height: 50px;
 }

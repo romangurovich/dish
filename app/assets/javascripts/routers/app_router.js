@@ -1,6 +1,7 @@
 Dish.Routers.AppRouter = Backbone.Router.extend({
 	routes: {
-		"": "index"//,
+		"": "index",
+		"feedback_requests/:id" : "showFeedbackRequest"
 		// "users": "trustedUsers",
 		// "users/:id": "userProfile",
 		// "feedbacks": "sentFeedbacks",
@@ -38,6 +39,14 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 		that.$content.html(sentFeedbackRequestsView.render().el);
 		that.$content.prepend(newFeedbackRequestView.render().el);
 		that.$requests.html(receivedFeedbackRequestsView.render().el);
-	} 
+	},
+
+	showFeedbackRequest: function(){
+		
+		var feedbackRequest = 
+		var showFeedbackRequestView = new Dish.Views.ShowFeedbackRequestView ({
+			collection: that.receivedFeedbackRequests
+		});
+	}
 
 });
