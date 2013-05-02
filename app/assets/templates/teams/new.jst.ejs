@@ -1,0 +1,23 @@
+<div class="new-team-form"
+  <label for="team_name">So...</label>
+  <input type="text" class="monster" id="team_name" name="team[name]">Name your team, fearless leader</input>
+  
+
+
+  <div class="image-bar">
+  <% team_members.each(function(member) { %>
+    <div class="thumbnail">
+      <%= member.escape("username"); %>
+    </div>
+  <% }); %>
+  <div>
+
+  <button class="btn btn-invite">Invite a friend</button>
+
+  <div class="slider">
+    <label for="email_member">Your friend's email address</label>
+    <input type="email" class="email" name="email_member"></input>   
+  </div>
+
+  <button class="submit btn btn-inverse">Make Team</button>
+</div>

@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 	def create
 		if login(params["user"]["username"], params["user"]["password"])
 			flash[:notice] = "Welcome #{current_user.username}"
-			redirect_to user_path(current_user)
+			redirect_to root_url
 		else
 			flash[:error] = "Wrong username or password"
 			render :new
@@ -15,6 +15,6 @@ class SessionsController < ApplicationController
 
 	def destroy
 		logout
-		redirect_to root_url
+		redirect_to hello_url
 	end
 end

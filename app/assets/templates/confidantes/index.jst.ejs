@@ -1,0 +1,8 @@
+<p class="lead">People I trust</p>
+<ul>
+<% confidantes.each(function (confidante) { %>
+  <li>
+    <a href="#/users/"+<%= confidante.id %>><%= confidante.get('username') %></a>
+  </li>
+<% }); %>
+</ul>

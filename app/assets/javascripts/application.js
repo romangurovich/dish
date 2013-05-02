@@ -15,6 +15,7 @@
 //= require underscore
 //= require backbone
 //= require backbone-relational
+//= require typeahead
 //= require dish
 //= require_tree ../templates
 //= require_tree ./models

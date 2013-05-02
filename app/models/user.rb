@@ -16,4 +16,14 @@ class User < ActiveRecord::Base
   has_many :received_unsolicited_feedbacks, foreign_key: :recipient_id, class_name: "UnsolicitedFeedback"
 
   has_many :votes, foreign_key: :voter_id
+
+  def trusted_people
+    User.find_by_sql(
+      "SELECT users.* FROM users
+      JOIN memberships
+      ON users.id = memberships.member_id
+      JOIN teams
+      ON memberships.team_id = teams.id
+      WHERE teams.owner_id = ?", self.id)
+  end
 end

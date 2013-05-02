@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	respond_to :html, only: [:index]
 
 	def index
-		@users = User.all
+		@users = User.pluck(:username)
 
 		respond_to do |format|
 			format.json { render json: @users }
@@ -24,5 +24,11 @@ class UsersController < ApplicationController
 		else
 			render json: @user.errors, status: 422
 		end
-	end 
+	end
+
+	def trusted_people
+		@user = User.find(params[:id])
+		render json: @user.trusted_people
+	end
+
 end

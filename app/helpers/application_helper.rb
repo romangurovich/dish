@@ -4,15 +4,13 @@ module ApplicationHelper
 		html << "<div class='navbar navbar-fixed-top dish-header'>"
 		html << "<div class='navbar-inner'>"
 		html << "<h1>DISH.IO</h1>"
-		html << "<div class='search pull-left'>"
-		html << "<input type=text name=user[full_name]>"
-		html << "Search for people you trust"
-		html << "</input></div>"
+		html << "<div class='pull-left'>"
+		html << '<input class="typeahead tt-query user-search" type="text" placeholder="Search for people you trust" autocomplete="off" spellcheck="false" dir="auto">'
+		html << "</div>"
 		html << make_login_toggle
 		html << "</div></div>"
 		html.html_safe
 	end
-
 
 	def make_login_toggle
 		html = ""

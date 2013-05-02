@@ -1,8 +1,9 @@
 <p class="lead">My Teams</p>
-<ul>
+<ul class="spotless">
 <% teams.each(function (team) { %>
   <li>
     <a href="#/teams/"+<%= team.id %>><%= team.get('name') %></a>
   </li>
 <% }); %>
 </ul>
+<button class="add-team btn btn-inverse">Add a team</button>

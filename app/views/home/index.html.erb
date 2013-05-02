@@ -1,10 +1,10 @@
 <div class="row">
-	<div id="nav-pane" class="span2">nav</div>
+	<div class="span2">
+    <div id="nav-pane">nav</div>
+    <div id="teams-pane">teams</div>
+  </div>
 	<div id="main-pane" class="span8">main</div>
 	<div id="requests-pane" class="span2">requests</div>
-</div>
-<div class="row">
-	<div id="teams-pane" class="span2">teams</div>
 </div>
 
 <script>
@@ -26,6 +26,12 @@ $(document).ready(function(){
     teamsData: <%= current_user.owned_teams.to_json.html_safe %>,
     receivedFeedbackRequestsData: <%= current_user.received_feedback_requests.to_json.html_safe %>,
     sentFeedbackRequestsData: <%= current_user.sent_feedback_requests.to_json.html_safe %>
+  });
+
+  $('.user-search').typeahead({
+    name: 'users',
+    prefetch: '../users.json',
+    limit: 10
   });
 });
 </script>

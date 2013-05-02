@@ -7,7 +7,7 @@ Dish.Models.Team = Backbone.RelationalModel.extend({
 			key: 'team'
 		}
 	},
-    {
+  {
     type: 'HasMany',
     key: 'receivedFeedbackRequests',
     relatedModel: 'Dish.Models.FeedbackRequest',

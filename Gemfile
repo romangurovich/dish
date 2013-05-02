@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'backbone-on-rails'
 gem 'ejs'
 gem 'bootstrap-sass'
+gem 'paperclip'
 
 group :development, :test do
 	gem "rspec-rails", "~> 2.0"
