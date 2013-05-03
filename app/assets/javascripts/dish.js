@@ -10,7 +10,7 @@ window.Dish = {
     _(this).extend(args);
 
     console.log("hello");
-    var user = new Dish.Models.User(this.userData);
+    Dish.Store.currentUser = new Dish.Models.User(this.userData);
     var teams = new Dish.Collections.Teams(this.teamsData); 
     var sentFeedbackRequests = new Dish.Collections.FeedbackRequests(this.sentFeedbackRequestsData);
     var receivedFeedbackRequests = new Dish.Collections.FeedbackRequests(this.receivedFeedbackRequestsData);
@@ -21,7 +21,7 @@ window.Dish = {
       $content: this.$content,
       $teams: this.$teams,
       $requests: this.$requests,
-      user: user,
+      user: Dish.Store.currentUser,
       teams: teams,
       sentFeedbackRequests: sentFeedbackRequests,
       receivedFeedbackRequests: receivedFeedbackRequests

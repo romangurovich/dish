@@ -13,6 +13,7 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 	initialize: function(args) {
 		args = args || {};
 		_(this).extend(args);
+		console.log(this.user);
 	},
 
 	index: function(){
@@ -69,7 +70,7 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 		unsolicitedFeedbacks.fetch({
 			success: function(){
 				var unsolicitedFeedbacksView = new Dish.Views.UnsolicitedFeedbacksView ({
-					collection: unsolicitedFeedbacks
+					collection: new Dish.Collections.UnsolicitedFeedbacks(unsolicitedFeedbacks.received())
 				});
 				that.$content.html(unsolicitedFeedbacksView.render().el);
 			}
@@ -91,11 +92,11 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 
 		console.log("moo");
 
-		var sentUnsolicitedFeedbacks = that.user.get("sentUnsolicitedFeedbacks");
-		sentUnsolicitedFeedbacks.fetch({
+		var unsolicitedFeedbacks = that.user.get("sentUnsolicitedFeedbacks");
+		unsolicitedFeedbacks.fetch({
 			success: function(){
 				var sentFeedbacksView = new Dish.Views.SentFeedbacksView ({
-					collection: sentUnsolicitedFeedbacks
+					collection: new Dish.Collections.UnsolicitedFeedbacks(unsolicitedFeedbacks.sent())
 				});
 				that.$content.html(sentFeedbacksView.render().el);
 			}

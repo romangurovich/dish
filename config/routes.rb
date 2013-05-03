@@ -20,7 +20,7 @@ Dish::Application.routes.draw do
   resource :session, only: [:create, :destroy, :new]
 
   match 'signup' => 'users#new', as: :signup
-  match 'login' => 'session#new', as: :login
+  match 'login' => 'sessions#new', as: :login
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
