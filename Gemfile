@@ -10,6 +10,7 @@ gem 'backbone-on-rails'
 gem 'ejs'
 gem 'bootstrap-sass'
 gem 'paperclip'
+gem "jquery-fileupload-rails"
 
 group :development, :test do
 	gem "rspec-rails", "~> 2.0"

@@ -4,9 +4,9 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 		"feedback_requests/:id" : "showFeedbackRequest",
 		"messages": "unsolicitedFeedbacksIndex",
 		"confidantes": "trustedUsers",
-		"teams": "teams"
+		"teams": "teams",
+		"feedbacks": "sentFeedbacks"
 		// "users/:id": "userProfile",
-		// "feedbacks": "sentFeedbacks",
 		// "teams/:id": "teamProfile"
 	},
 
@@ -84,6 +84,36 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 		});
 
 		that.$content.html(teamsIndexView.render().el);
+	},
+
+	sentFeedbacks: function() {
+		var that = this;
+
+		console.log("moo");
+
+		var sentUnsolicitedFeedbacks = that.user.get("sentUnsolicitedFeedbacks");
+		sentUnsolicitedFeedbacks.fetch({
+			success: function(){
+				var sentFeedbacksView = new Dish.Views.SentFeedbacksView ({
+					collection: sentUnsolicitedFeedbacks
+				});
+				that.$content.html(sentFeedbacksView.render().el);
+			}
+		});
+
+
+		// var newFeedbackView = new Dish.Views.NewFeedbackView ({
+		// 	collection: sentFeedbacks,
+		// 	currentUser: that.user,
+		// 	victims: victims
+		// });
+
+
+		// that.$content.prepend(newFeedbackRequestView.render().el);
+
+
+
+
 	}
 
 	// trustedUsers: function(){

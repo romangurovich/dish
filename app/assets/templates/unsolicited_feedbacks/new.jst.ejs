@@ -1,0 +1,13 @@
+<div class="feedback-form"
+  <label for="feedback_body">Time to dish.</label>
+  <textarea class="monster" id="feedback_body" name="feedback[body]">Let loose</textarea>
+  <div class="slider">
+    <label for="feedback_recipient">Who's the victim?</label>
+    <select class=feedback_[recipient_id] id="feedback_recipient_id">
+      <% victims.each(function(victim) { %>
+        <option value="<%= victim.get('id') %>"><%= victim.get('username') %></option>
+      <% }); %>
+    </select>
+    <button class="submit btn btn-inverse bold-btn">Dish</button>
+  </div>
+</div>

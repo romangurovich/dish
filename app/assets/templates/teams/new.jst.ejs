@@ -2,12 +2,10 @@
   <label for="team_name">So...</label>
   <input type="text" class="monster" id="team_name" name="team[name]">Name your team, fearless leader</input>
   
-
-
   <div class="image-bar">
   <% team_members.each(function(member) { %>
     <div class="thumbnail">
-      <%= member.escape("username"); %>
+      <%= member.escape("username") %>
     </div>
   <% }); %>
   <div>

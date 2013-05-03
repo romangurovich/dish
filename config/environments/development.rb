@@ -34,4 +34,7 @@ Dish::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Sets path for ImageMagik 
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 end

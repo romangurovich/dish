@@ -4,6 +4,35 @@
 
 }
 
+select {
+  background: black;
+  color: white;
+  font-weight: bold;
+}
+
+option {
+    background: #FCF459;
+    color: white;
+}
+
+.bold-btn {
+  height: 60px;
+  background: #F23E0D;
+  font-size: 24px;
+  font-weight: bold;
+  &:hover {
+    -webkit-transition: all 0.3s ease-in;  /* Chrome 1-25, Safari 3.2+ */
+    -moz-transition: all 0.3s ease-in;  /* Firefox 4-15 */
+    -o-transition: all 0.3s ease-in;  /* Opera 10.50–12.00 */
+    transition: all 0.3s ease-in;
+    background: #421103;
+  }
+}
+
+.add-team {
+  margin: 20px 10px;
+}
+
 .user-search {
   position: relative;
   vertical-align: top;

@@ -1,0 +1,13 @@
+<p class="lead">Unprompted personal attacks. Go you!</p>
+<ul class="spotless">
+<% sentUnsolicitedFeedbacks.each(function (feedback) { %>
+  <li class="well lead">
+    <a href="<%= '#/feedbacks/' + feedback.id %>">
+      <%= feedback.get('body') %>
+    </a>
+    <p>
+      sent to <%= feedback.get('recipient_id') %>
+    </p>
+  </li>
+<% }); %>
+</ul>

@@ -1,8 +1,7 @@
 Dish::Application.routes.draw do
   
   root to: 'home#index'
-  get "hello" => "home"
-
+  get "hello" => "home#hello"
 
   resources :users do
     resources :unsolicited_feedbacks, only: [:index, :create, :new]

@@ -1,0 +1,33 @@
+<%= form_for(@user) do |f| %>
+
+
+<p>
+  <%= f.label :email, "Email Address" %>
+  <%= f.email_field :email %>
+</p>
+
+<p>
+  <%= f.label :username, "User Name" %>
+  <%= f.text_field :username %>
+</p>
+
+<p>
+  <%= f.label :password, "Password" %>
+  <%= f.password_field :password %>
+</p>
+
+<p>
+  <%= f.label :password_confirmation, "Confirm Password" %>
+  <%= f.password_field :password_confirmation %>
+</p>
+
+<p>
+  <%= f.file_field :avatar %>
+</p>
+
+<p>
+  <%= f.submit %>
+</p>
+
+<% end %>
+

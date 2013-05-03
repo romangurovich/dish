@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	respond_to :json
-	respond_to :html, only: [:index]
+	respond_to :html, only: [:index, :new]
 
 	def index
 		@users = User.pluck(:username)
@@ -9,6 +9,10 @@ class UsersController < ApplicationController
 			format.json { render json: @users }
 			format.html { render :index }
 		end
+	end
+
+	def new
+		@user = User.new
 	end
 
 	def show
@@ -20,9 +24,11 @@ class UsersController < ApplicationController
 		@user = User.new(params[:user])
 
 		if @user.save
-			render json: @user
+			login(@user.username, @user.password)
+			redirect_to root_url
 		else
-			render json: @user.errors, status: 422
+			flash.now[:error] = @user.errors.full_messages
+			render :new
 		end
 	end
 
