@@ -1,4 +1,4 @@
-class TeamsController < ApplicationController
+class ConfidantesController < ApplicationController
   respond_to :json
 
   def index

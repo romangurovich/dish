@@ -30,4 +30,8 @@ class User < ActiveRecord::Base
       ON memberships.team_id = teams.id
       WHERE teams.owner_id = ?", self.id)
   end
+
+  def as_json(options = nil)
+    super({include: {:victims => {:only => [:id, :username] }}}.merge(options || {}))
+  end
 end

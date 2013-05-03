@@ -3,7 +3,7 @@
 <% sentFeedbackRequests.each(function (sentFeedbackRequest) { %>
 	<li class="well lead">
     <a href="<%= '#/feedback_requests/' + sentFeedbackRequest.id %>">
-			<%= sentFeedbackRequest.get('body') %>
+			<%= sentFeedbackRequest.escape('body') %>
 		</a>
 	</li>
 <% }); %>

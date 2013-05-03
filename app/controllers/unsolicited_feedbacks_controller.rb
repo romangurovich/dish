@@ -1,19 +1,11 @@
 class UnsolicitedFeedbacksController < ApplicationController
   def index
-    # received_unsolicited_feedbacks = UnsolicitedFeedback.where("recipient_id = ?", current_user.id)
-    # sent_unsolicited_feedbacks = UnsolicitedFeedback.where("author_id = ?", current_user.id)
     @unsolicited_feedbacks = UnsolicitedFeedback.sent_and_received_by_user_id(current_user.id)
     render json: @unsolicited_feedbacks
   end
 
-  # def sent
-  #   @unsolicited_feedbacks = UnsolicitedFeedback.where("author_id = ?", current_user.id)
-  #   render json: @unsolicited_feedbacks
-  # end
-
   def show
     @unsolicited_feedback = UnsolicitedFeedback.find(params[:id])
-
     render json: @unsolicited_feedback
   end
 

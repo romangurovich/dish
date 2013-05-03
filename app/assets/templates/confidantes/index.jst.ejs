@@ -2,7 +2,7 @@
 <ul>
 <% confidantes.each(function (confidante) { %>
   <li>
-    <a href="#/users/"+<%= confidante.id %>><%= confidante.get('username') %></a>
+    <a href="#/users/"+<%= confidante.id %>><%= confidante.escape('username') %></a>
   </li>
 <% }); %>
 </ul>

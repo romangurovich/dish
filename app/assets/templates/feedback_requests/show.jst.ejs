@@ -1,8 +1,8 @@
-<p class="lead"><%= feedbackRequest.get("body") %></p>
+<p class="lead"><%= feedbackRequest.escape('body') %></p>
 <ul class="spotless">
 <% receivedFeedbacks.each(function (feedback) { %>
   <li class="well lead">
-      <%= feedback.get('body') %>
+      <%= feedback.escape('body') %>
     </a>
   </li>
 <% }); %>

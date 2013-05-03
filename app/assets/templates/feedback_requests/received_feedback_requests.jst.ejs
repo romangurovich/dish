@@ -2,9 +2,9 @@
 <ul class="spotless">
 <% receivedFeedbackRequests.each(function (receivedFeedbackRequest) { %>
   <li class="well">
-    <%= receivedFeedbackRequest.get('requestor').get('username') %> says
+    <%= receivedFeedbackRequest.get('requestor').escape('username') %> says
     <a href="<%= '#/feedback_requests/' + receivedFeedbackRequest.id %>">
-      <%= receivedFeedbackRequest.get('body') %>
+      <%= receivedFeedbackRequest.escape('body') %>
     </a>
   </li>
 <% }); %>

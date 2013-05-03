@@ -13,7 +13,6 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 	initialize: function(args) {
 		args = args || {};
 		_(this).extend(args);
-		console.log(this.user);
 	},
 
 	index: function(){
@@ -90,29 +89,33 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 	sentFeedbacks: function() {
 		var that = this;
 
-		console.log("moo");
-
 		var unsolicitedFeedbacks = that.user.get("sentUnsolicitedFeedbacks");
 		unsolicitedFeedbacks.fetch({
 			success: function(){
 				var sentFeedbacksView = new Dish.Views.SentFeedbacksView ({
 					collection: new Dish.Collections.UnsolicitedFeedbacks(unsolicitedFeedbacks.sent())
 				});
+				
 				that.$content.html(sentFeedbacksView.render().el);
+
+				var victims_array = that.user.get("victims");
+				var victims = new Dish.Collections.Users().reset(victims_array);
+
+				console.log(that.user.get("victims"));
+				console.log(victims);
+				victims.fetch({
+					success: function(){
+						var newFeedbackView = new Dish.Views.NewFeedbackView ({
+							collection: unsolicitedFeedbacks,
+							currentUser: that.user,
+							victims: victims
+						});
+
+						that.$content.prepend(newFeedbackView.render().el);
+					}
+				});
 			}
 		});
-
-
-		// var newFeedbackView = new Dish.Views.NewFeedbackView ({
-		// 	collection: sentFeedbacks,
-		// 	currentUser: that.user,
-		// 	victims: victims
-		// });
-
-
-		// that.$content.prepend(newFeedbackRequestView.render().el);
-
-
 
 
 	}

@@ -1,7 +1,74 @@
 @import 'bootstrap';
 
-#main-pane {
 
+.navbar-inner {
+  h1 {
+    margin-left: 10px;
+  }
+
+  .searchy {
+    margin-left: 10px;
+  }
+}
+
+.log_in_toggle {
+  margin-right: 10px;
+}
+
+.megabox {
+  background: url(megaphone.jpg);
+}
+
+.summaries {
+  margin-top: 30px;
+  margin-bottom: 40px;
+  header {
+    background: black;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+  }
+}
+
+.call-to-action {
+  margin-left: auto;
+  margin-right: auto;
+  background: black;
+  color: white;
+  margin-top: 50px;
+  maergin-bottom: 20px;
+  padding: 80px;
+  border-color: blue;
+  border-style: none none ridge none;
+
+
+  p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  a {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.big-btn {
+  color: #212626;
+  background: #D62448;
+  font-weight: bold;
+  font-size: 40px;
+  padding: 40px;
+  text-align: center;
+  -webkit-transition: all 0.3s ease-out;  /* Chrome 1-25, Safari 3.2+ */
+  -moz-transition: all 0.3s ease-out;  /* Firefox 4-15 */
+  -o-transition: all 0.3s ease-out;  /* Opera 10.50–12.00 */
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    background: #F23E7A;
+    color: #434E4F;
+  }
 }
 
 select {

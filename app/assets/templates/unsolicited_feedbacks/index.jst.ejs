@@ -3,7 +3,7 @@
 <% receivedFeedbacks.each(function (feedback) { %>
   <li class="well lead">
     <a href="<%= '#/messages/' + feedback.id %>">
-      <%= feedback.get('body') %>
+      <%= feedback.escape('body') %>
     </a>
   </li>
 <% }); %>

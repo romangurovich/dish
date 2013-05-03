@@ -3,10 +3,10 @@
 <% sentUnsolicitedFeedbacks.each(function (feedback) { %>
   <li class="well lead">
     <a href="<%= '#/feedbacks/' + feedback.id %>">
-      <%= feedback.get('body') %>
+      <%= feedback.escape('body') %>
     </a>
     <p>
-      sent to <%= feedback.get('recipient_id') %>
+      sent to <%= feedback.escape('recipient_id') %>
     </p>
   </li>
 <% }); %>

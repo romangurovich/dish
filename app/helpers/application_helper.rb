@@ -4,7 +4,7 @@ module ApplicationHelper
 		html << "<div class='navbar navbar-fixed-top dish-header'>"
 		html << "<div class='navbar-inner'>"
 		html << "<h1>DISH.IO</h1>"
-		html << "<div class='pull-left'>"
+		html << "<div class='pull-left searchy'>"
 		html << '<input class="typeahead tt-query user-search" type="text" placeholder="Search for people you trust" autocomplete="off" spellcheck="false" dir="auto">'
 		html << "</div>"
 		html << make_login_toggle

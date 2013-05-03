@@ -2,7 +2,7 @@
 <ul class="spotless">
 <% teams.each(function (team) { %>
   <li>
-    <a href="#/teams/"+<%= team.id %>><%= team.get('name') %></a>
+    <a href="#/teams/"+<%= team.id %>><%= team.escape('name') %></a>
   </li>
 <% }); %>
 </ul>
