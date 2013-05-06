@@ -1,6 +1,5 @@
 @import 'bootstrap';
 
-
 .navbar-inner {
   h1 {
     margin-left: 10px;
@@ -135,7 +134,7 @@ ul.spotless {
 
 .monster {
   height: 80px;
-  width: 100%;
+  width: 98%;
   color: #D62448;
   background: #212626;
   font-weight: bold;
@@ -223,3 +222,17 @@ twitter-typeahead .tt-query,
 .tt-suggestion p {
   margin: 0;
 }
+
+.long-text {
+  width: 97%;
+}
+
+.super-wide {
+  width: 100%;
+}
+
+#back_to_top {
+  margin-top: 20px;
+  padding: 10px;
+}
+

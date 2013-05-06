@@ -8,14 +8,13 @@ Dish.Views.NewFeedbackView = Backbone.View.extend({
   initialize: function(args){
     args = args || {};
     _(this).extend(args);
-    console.log(this.victims);
   },
 
   render: function() {
     var that = this;
 
     var renderedContent = JST['unsolicited_feedbacks/new']({
-      teams: that.teams
+      victims: that.victims
     });
     that.$el.html(renderedContent);
     return that;

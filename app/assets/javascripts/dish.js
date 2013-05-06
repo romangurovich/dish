@@ -9,7 +9,6 @@ window.Dish = {
     args = args || {};
     _(this).extend(args);
 
-    console.log("hello");
     Dish.Store.currentUser = new Dish.Models.User(this.userData);
     var teams = new Dish.Collections.Teams(this.teamsData); 
     var sentFeedbackRequests = new Dish.Collections.FeedbackRequests(this.sentFeedbackRequestsData);

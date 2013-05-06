@@ -12,7 +12,7 @@ Dish.Collections.FeedbackRequests = Backbone.Collection.extend({
   // }
 
   comparator:  function(feedbackRequestA, feedbackRequestB) { 
-    return (feedbackRequestA.get('created_at') > feedbackRequestB.get('created_at')) ? -1 : 1;
+    return feedbackRequestA.get('created_at') < feedbackRequestB.get('created_at');
   }
 
   // byCreatedAt: function() {

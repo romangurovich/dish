@@ -5,6 +5,7 @@
   </div>
 	<div id="main-pane" class="span8">main</div>
 	<div id="requests-pane" class="span2">requests</div>
+  <a class="btn big-btn super-wide" id="back_to_top" href="#top">back to top</a>
 </div>
 
 <script>
@@ -33,5 +34,22 @@ $(document).ready(function(){
     prefetch: '../users.json',
     limit: 10
   });
+
+
+  $(window).scroll(function(){
+    var h = $('body').height();
+    var y = $(window).scrollTop();
+    if( y > (h*.5) ){
+      $("#back_to_top").show();
+    } else {
+      $('#back_to_top').hide();
+    }
+  });
+
+  $("a[href='#top']").click(function() {
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+    return false;
+  });
+
 });
 </script>

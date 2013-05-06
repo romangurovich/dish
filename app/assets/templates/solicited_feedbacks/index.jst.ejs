@@ -1,0 +1,8 @@
+<ul class="spotless">
+<% receivedFeedbacks.each(function (feedback) { %>
+  <li class="well lead">
+      <%= feedback.escape('body') %>
+    </a>
+  </li>
+<% }); %>
+</ul>

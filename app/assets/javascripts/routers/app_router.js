@@ -46,18 +46,29 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 	showFeedbackRequest: function(id){
 		var that = this;
 
-		var feedbackRequest = that.sentFeedbackRequests.get(id);
+		var feedbackRequest = that.receivedFeedbackRequests.get(id) || that.sentFeedbackRequests.get(id);
 		var receivedFeedbacks = feedbackRequest.get('solicitedFeedbacks');
 		receivedFeedbacks.fetch({
 			success: function(){
-				console.log(receivedFeedbacks.models); 
+				console.log(receivedFeedbacks.models);
 
 				var showFeedbackRequestView = new Dish.Views.ShowFeedbackRequestView ({
-					collection: receivedFeedbacks,
 					model: feedbackRequest
 				});
 
-				that.$content.html(showFeedbackRequestView.render().el);
+				var newSolicitedFeedbackView = new Dish.Views.NewSolicitedFeedbackView ({
+					model: feedbackRequest,
+					collection: receivedFeedbacks
+				});
+
+				var solicitedFeedbacksView = new Dish.Views.SolicitedFeedbacksView ({
+					collection: receivedFeedbacks
+				});
+
+
+				that.$content.html(solicitedFeedbacksView.render().el);
+				that.$content.prepend(newSolicitedFeedbackView.render().el);
+				that.$content.prepend(showFeedbackRequestView.render().el);
 			}
 		});	
 	},
@@ -99,6 +110,7 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 				that.$content.html(sentFeedbacksView.render().el);
 
 				var victims_array = that.user.get("victims");
+				console.log(victims_array);
 				var victims = new Dish.Collections.Users().reset(victims_array);
 
 				console.log(that.user.get("victims"));
