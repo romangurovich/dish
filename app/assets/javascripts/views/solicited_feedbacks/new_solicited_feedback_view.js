@@ -11,8 +11,13 @@ Dish.Views.NewSolicitedFeedbackView = Backbone.View.extend({
   render: function(){
     var that = this;
 
-    var renderedContent = JST["solicited_feedbacks/new"]();
-
+    console.log(this.model);
+    if (Dish.Store.currentUser.get("username") == this.model.get("requestor").get("username")){
+      var renderedContent = "";
+    } else {
+      var renderedContent = JST["solicited_feedbacks/new"]();
+    }
+    
     that.$el.html(renderedContent);
     return that;
   },
@@ -29,8 +34,8 @@ Dish.Views.NewSolicitedFeedbackView = Backbone.View.extend({
 
       that.collection.add(solicitedFeedback);
       solicitedFeedback.save();
-      that.$('input#new_feedback').hide();
-      Backbone.history.navigate("/#");
+      that.$('#solicited_feedback_form').remove();
+      // Backbone.history.navigate("/#");
     }
   }
 

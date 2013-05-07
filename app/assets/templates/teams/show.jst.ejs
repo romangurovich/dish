@@ -1,0 +1,9 @@
+<p class="lead"><%= team.escape('name') %></p>
+<ul class="polaroids">
+<% members.each(function(member){ %>
+  <li>
+    <a href="#" title="<%= member.escape('username') %>">
+        <img src="/dish.jpg">
+    </a>
+  </li>
+<% }); %>

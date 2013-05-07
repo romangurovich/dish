@@ -1,4 +1,5 @@
 Dish.Models.User = Backbone.RelationalModel.extend({
+	urlRoot: '/users',
 	relations: [{
 		type: 'HasMany',
 		key: 'teams',

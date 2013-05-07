@@ -8,6 +8,7 @@ Dish.Views.NewFeedbackView = Backbone.View.extend({
   initialize: function(args){
     args = args || {};
     _(this).extend(args);
+    console.log(this.victims);
   },
 
   render: function() {

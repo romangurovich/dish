@@ -1,3 +1,4 @@
 Dish.Collections.Teams = Backbone.Collection.extend({
-  model: Dish.Models.Team
+  model: Dish.Models.Team,
+  url: "/teams"
 });
