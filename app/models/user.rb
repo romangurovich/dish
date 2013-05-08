@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_token, :username, :nickname, :avatar
-
   validates :email, :password, :username, presence: true
   validates :email, :username, uniqueness: true
   validates :password, confirmation: true
@@ -19,7 +18,11 @@ class User < ActiveRecord::Base
 
   has_many :votes, foreign_key: :voter_id
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar,
+  :styles => { :small => "100x100#", :thumb => "50x50#" },
+  :default_url => 'https://s3-us-west-1.amazonaws.com/dish-images/missing_:style.png',
+  :path => "users/:id/avatar/:style.:extension"
+
 
   def trusted_people
     User.find_by_sql(
@@ -31,7 +34,11 @@ class User < ActiveRecord::Base
       WHERE teams.owner_id = ?", self.id)
   end
 
+  def avatar_url
+    avatar.url(:small)
+  end
+
   def as_json(options = nil)
-    super({include: {:victims => {:only => [:id, :username] }}}.merge(options || {}))
+    super({include: {:victims => {:only => [:id, :username] }, :teams => {:only => [:id]}}}.merge(options || {}))
   end
 end

@@ -10,7 +10,10 @@ Dish::Application.routes.draw do
 
   resources :confidantes, only: [:index]
 
-  resources :teams
+  resources :teams do
+    resources :users
+  end
+  
   resources :feedback_requests do
      resources :solicited_feedbacks, only: [:index, :create, :new, :show]
   end

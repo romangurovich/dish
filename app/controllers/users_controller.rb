@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+	skip_before_filter :require_login, only: [:new, :create]
+
 	respond_to :json
 	respond_to :html, only: [:index, :new]
 
@@ -15,9 +17,13 @@ class UsersController < ApplicationController
 		@user = User.new
 	end
 
+	def edit
+		@user = current_user
+	end
+
 	def show
 		@user = User.find(params[:id])
-		render json: @user
+		render json: @user.to_json(:methods => [:avatar_url])
 	end
 
 	def create
@@ -29,6 +35,19 @@ class UsersController < ApplicationController
 		else
 			flash.now[:error] = @user.errors.full_messages
 			render :new
+		end
+	end
+
+	def update
+		@user = current_user
+		@user.assign_attributes(params[:user])
+
+		if @user.save
+			flash[:notice] = "Updated your details, #{@user.username}"
+			redirect_to root_url
+		else
+			flash.now[:error] = @user.errors.full_messages
+			render :edit
 		end
 	end
 

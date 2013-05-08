@@ -8,7 +8,6 @@ Dish.Views.NewFeedbackView = Backbone.View.extend({
   initialize: function(args){
     args = args || {};
     _(this).extend(args);
-    console.log(this.victims);
   },
 
   render: function() {
@@ -49,6 +48,5 @@ Dish.Views.NewFeedbackView = Backbone.View.extend({
     feedback.save();
     that.$('textarea#feedback_body').val("");
     that.reset();
-    Backbone.history.navigate("/#");
   }
 });

@@ -1,0 +1,25 @@
+<%= form_for(@user) do |f| %>
+
+<p>
+  <%= f.label :username, "User Name" %>
+  <%= f.text_field :username %>
+</p>
+
+<p>
+  <%= f.label :nickname, "Nickame" %>
+  <%= f.text_field :nickname %>
+</p>
+
+<p>
+  <label>Your Avatar</label>
+  <% if @user.avatar %>
+    <%= image_tag @user.avatar.url(:thumb) %>
+  <% end %>
+  <%= f.file_field :avatar %>
+</p>
+
+<p>
+  <%= f.submit %>
+</p>
+
+<% end %>

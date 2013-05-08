@@ -3,7 +3,10 @@ module ApplicationHelper
 		html = ""
 		html << "<div class='navbar navbar-fixed-top dish-header'>"
 		html << "<div class='navbar-inner'>"
-		html << "<h1>DISH.IO</h1>"
+		html << "<h1>"
+		html << "<a class='page-title' href='" + root_url.html_safe + "'>DISH.IO</a>"
+		html << make_avatar
+		html << "</h1>"
 		html << "<div class='pull-left searchy'>"
 		html << '<input class="typeahead tt-query user-search" type="text" placeholder="Search for people you trust" autocomplete="off" spellcheck="false" dir="auto">'
 		html << "</div>"
@@ -15,9 +18,8 @@ module ApplicationHelper
 	def make_login_toggle
 		html = ""
 		html << "<div class= 'log_in_toggle pull-right'>"
-
 		if logged_in?
-			html << (link_to current_user.username, user_path(current_user), class: "black")
+			html << (link_to current_user.username, edit_user_path(current_user), class: "black")
 			html << " | "
 			html << (link_to 'Log out', session_path, method: :delete)
 		else
@@ -26,6 +28,16 @@ module ApplicationHelper
 			html << (link_to 'Log in', login_path)
 		end
 
+		html << "</div>"
+		html.html_safe
+	end
+
+	def make_avatar
+		pic = logged_in? ? (image_tag current_user.avatar.url(:thumb)) : ""
+
+		html = ""
+		html << "<div class='avatar-top'>"
+		html << pic.html_safe
 		html << "</div>"
 		html.html_safe
 	end

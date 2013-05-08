@@ -103,32 +103,23 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 		unsolicitedFeedbacks.fetch({
 			success: function(){
 				var sentFeedbacksView = new Dish.Views.SentFeedbacksView ({
-					collection: new Dish.Collections.UnsolicitedFeedbacks(unsolicitedFeedbacks.sent())
+					collection: unsolicitedFeedbacks,
+					sentFeedbacks: new Dish.Collections.UnsolicitedFeedbacks(unsolicitedFeedbacks.sent())
 				});
 				
 				that.$content.html(sentFeedbacksView.render().el);
 
-				var victims_array = that.user.get("victims");
-				console.log(victims_array);
-				var victims = new Dish.Collections.Users();
+				var victims = _.uniq(that.user.get("victims"));
 
 				console.log(that.user.get("victims"));
 
-				victims.fetch({
-  				data : {
-    				victim_ids : victims_array // array of the message ids you want to retrieve as models
- 					},
-
-					success: function(){
-						var newFeedbackView = new Dish.Views.NewFeedbackView ({
-							collection: unsolicitedFeedbacks,
-							currentUser: that.user,
-							victims: victims
-						});
-
-						that.$content.prepend(newFeedbackView.render().el);
-					}
+				var newFeedbackView = new Dish.Views.NewFeedbackView ({
+					collection: unsolicitedFeedbacks,
+					currentUser: that.user,
+					victims: victims
 				});
+
+				that.$content.prepend(newFeedbackView.render().el);
 			}
 		});
 
@@ -155,16 +146,27 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 		var team = that.teams.get(id);
 		console.log(team);
 		var members = team.get("members");
-		members.fetch({
-			success: function(){
-				var showTeamView = new Dish.Views.ShowTeamView({
-					team: team,
-					members: members
-				});
 
-				that.$content.html(showTeamView.render().el);
-			}
+		var showTeamView = new Dish.Views.ShowTeamView({
+			team: team,
+			members: members
 		});
+
+		that.$content.html(showTeamView.render().el);
+		// var members = new Dish.Collections.TeamMembers();
+		// members.fetch({
+		// 	// data : {
+  //  //  		member_ids : membersArray // array of the message ids you want to retrieve as models
+ 	// 	// 	},
+		// 	success: function(){
+		// 		var showTeamView = new Dish.Views.ShowTeamView({
+		// 			team: team,
+		// 			members: members
+		// 		});
+
+		// 		that.$content.html(showTeamView.render().el);
+		// 	}
+		// });
 	}
 
 });

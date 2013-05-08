@@ -3,7 +3,7 @@
 <% members.each(function(member){ %>
   <li>
     <a href="#" title="<%= member.escape('username') %>">
-        <img src="/dish.jpg">
+        <img src="<%= member.escape('avatar_url') %>">
     </a>
   </li>
 <% }); %>

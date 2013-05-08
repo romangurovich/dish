@@ -10,6 +10,8 @@ gem 'backbone-on-rails'
 gem 'ejs'
 gem 'bootstrap-sass'
 gem 'paperclip'
+gem 'aws-sdk', '~> 1.5.7'
+gem "figaro"
 gem "jquery-fileupload-rails"
 
 group :development, :test do

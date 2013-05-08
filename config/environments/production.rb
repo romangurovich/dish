@@ -1,6 +1,17 @@
 Dish::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  # config/environments/production.rb
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :bucket => "dish-images",
+    :s3_host_name => "s3-us-west-1.amazonaws.com",
+    :s3_credentials => {
+      :access_key_id => ENV['S3_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['S3_SECRET_ACCESS_KEY']
+    }
+  }
+
   # Code is not reloaded between requests
   config.cache_classes = true
 
