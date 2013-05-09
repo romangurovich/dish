@@ -10,20 +10,22 @@ window.Dish = {
     _(this).extend(args);
 
     Dish.Store.currentUser = new Dish.Models.User(this.userData);
-    var teams = new Dish.Collections.Teams(this.teamsData); 
-    var sentFeedbackRequests = new Dish.Collections.FeedbackRequests(this.sentFeedbackRequestsData);
-    var receivedFeedbackRequests = new Dish.Collections.FeedbackRequests(this.receivedFeedbackRequestsData);
+    this.teams = new Dish.Collections.Teams(this.teamsData); 
+    this.sentFeedbackRequests = new Dish.Collections.FeedbackRequests(this.sentFeedbackRequestsData);
+    this.receivedFeedbackRequests = new Dish.Collections.FeedbackRequests(this.receivedFeedbackRequestsData);
     
     this.install_nav_pane();
+    this.install_teams_pane();
+    this.install_requests_pane();
 
     new Dish.Routers.AppRouter({
       $content: this.$content,
       $teams: this.$teams,
       $requests: this.$requests,
       user: Dish.Store.currentUser,
-      teams: teams,
-      sentFeedbackRequests: sentFeedbackRequests,
-      receivedFeedbackRequests: receivedFeedbackRequests
+      teams: this.teams,
+      sentFeedbackRequests: this.sentFeedbackRequests,
+      receivedFeedbackRequests: this.receivedFeedbackRequests
     });
 
     Backbone.history.start();
@@ -32,6 +34,26 @@ window.Dish = {
   install_nav_pane: function() {
     var navPaneView = new Dish.Views.NavPaneView();
     this.$nav.html(navPaneView.render().el);
+  },
+
+  install_teams_pane: function() {
+    var that = this;
+
+    var teamsIndexView = new Dish.Views.TeamsIndexView ({
+      collection: that.teams
+    });
+
+    that.$teams.html(teamsIndexView.render().el);
+  },
+
+  install_requests_pane: function() {
+    var that = this;
+    
+    var receivedFeedbackRequestsView = new Dish.Views.ReceivedFeedbackRequestsView ({
+      collection: that.receivedFeedbackRequests
+    });
+
+    that.$requests.html(receivedFeedbackRequestsView.render().el);
   }
 };
 // $(document).ready(function(){

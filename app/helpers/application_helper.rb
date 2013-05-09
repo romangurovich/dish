@@ -8,7 +8,7 @@ module ApplicationHelper
 		html << make_avatar
 		html << "</h1>"
 		html << "<div class='pull-left searchy'>"
-		html << '<input class="typeahead tt-query user-search" type="text" placeholder="Search for people you trust" autocomplete="off" spellcheck="false" dir="auto">'
+		html << '<input class="user-search" type="text" placeholder="Search for people you trust" data-provide: "typeahead" spellcheck="false" dir="auto">'
 		html << "</div>"
 		html << make_login_toggle
 		html << "</div></div>"
@@ -17,15 +17,13 @@ module ApplicationHelper
 
 	def make_login_toggle
 		html = ""
-		html << "<div class= 'log_in_toggle pull-right'>"
+		html << "<div class= 'log_in_toggle pull-right btn-group'>"
 		if logged_in?
-			html << (link_to current_user.username, edit_user_path(current_user), class: "black")
-			html << " | "
-			html << (link_to 'Log out', session_path, method: :delete)
+			html << (link_to current_user.username, edit_user_path(current_user), class: "btn btn-success")
+			html << (link_to 'Log out <i class="icon-off"></i>'.html_safe, session_path, method: :delete, class: "btn")
 		else
-			html << (link_to 'Sign up', signup_path)
-			html << " | "
-			html << (link_to 'Log in', login_path)
+			html << (link_to 'Sign up', signup_path, class: "btn")
+			html << (link_to 'Log in', login_path, class: "btn")
 		end
 
 		html << "</div>"

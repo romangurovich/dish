@@ -6,6 +6,7 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 		"confidantes": "trustedUsers",
 		"teams": "teams",
 		"feedbacks": "sentFeedbacks",
+		"teams/new": "newTeam",
 		"teams/:id": "showTeam"
 		// "users/:id": "userProfile",
 	},
@@ -18,16 +19,8 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 	index: function(){
 		var that = this;
 
-		var teamsIndexView = new Dish.Views.TeamsIndexView ({
-			collection: that.teams
-		});
-
 		var sentFeedbackRequestsView = new Dish.Views.SentFeedbackRequestsView ({
 			collection: that.sentFeedbackRequests
-		});
-
-		var receivedFeedbackRequestsView = new Dish.Views.ReceivedFeedbackRequestsView ({
-			collection: that.receivedFeedbackRequests
 		});
 
 		var newFeedbackRequestView = new Dish.Views.NewFeedbackRequestView ({
@@ -36,11 +29,8 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 			teams: that.teams
 		});
 
-	
-		that.$teams.html(teamsIndexView.render().el);
 		that.$content.html(newFeedbackRequestView.render().el);
 		that.$content.append(sentFeedbackRequestsView.render().el);
-		that.$requests.html(receivedFeedbackRequestsView.render().el);
 	},
 
 	showFeedbackRequest: function(id){
@@ -130,6 +120,7 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 		var that = this;
 
 		var confidantes = that.user.get("confidantes");
+		console.log(confidantes);
 		confidantes.fetch({
 			success: function(){
 				var confidantesIndexView = new Dish.Views.ConfidantesIndexView ({
@@ -167,6 +158,18 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 		// 		that.$content.html(showTeamView.render().el);
 		// 	}
 		// });
+	},
+
+	newTeam: function(){
+		var that = this;
+
+		var team = new Dish.Models.Team();
+		var newTeamView = new Dish.Views.NewTeamView({
+			team: team
+		});
+
+		that.$content.html(newTeamView.render().el);
+
 	}
 
 });

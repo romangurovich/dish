@@ -10,12 +10,6 @@
 
 <script>
 $(document).ready(function(){
-  var b = <%= current_user.to_json.html_safe %>
-  console.log(b);
-
-
-  var c = <%= current_user.owned_teams.to_json.html_safe %>
-  console.log(c);
 
   Dish.initialize({
     $nav: $('#nav-pane'),
@@ -33,13 +27,22 @@ $(document).ready(function(){
     name: 'users',
     prefetch: '../users.json',
     limit: 10
+    // template: '<p><strong>{{username}}</strong></p>',
+    // engine: Hogan
   });
 
+  $('a').on("click", function(){
+    $('#back_to_top').hide();
+  });
 
-  $(window).scroll(function(){
-    var h = $('body').height();
-    var y = $(window).scrollTop();
-    if( y > (h*.5) ){
+  $(window).on("scroll ready resize", function(){
+    var h = $('.container').height();
+    // var y = $(window).scrollTop();
+    var w = $(window).height();
+    // var t = $('#back_to_top').position().top
+    if (h > w) {
+
+    // if( y > (h*.5) ){
       $("#back_to_top").show();
     } else {
       $('#back_to_top').hide();

@@ -9,7 +9,12 @@ class Team < ActiveRecord::Base
   belongs_to :owner, class_name: "User"
 
   def as_json(options = nil)
-    super({include: {:members => {:only => [:id, :username], :methods => [:avatar_url]}}}.merge(options || {}))
+    super({include: {
+      :members => {
+        :only => [:id, :username],
+        :methods => [:avatar_url]
+      }
+    }}.merge(options || {}))
   end
 
 end

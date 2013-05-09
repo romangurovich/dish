@@ -19,7 +19,12 @@
 }
 
 .megabox {
-  background: url(megaphone.jpg);
+  background: url('tattle.jpg');
+  background-size: 100%;
+  margin-bottom: 20px;
+  padding: 20px 40px;
+  border-color: blue;
+  border-style: none none ridge none;
 }
 
 .summaries {
@@ -34,16 +39,14 @@
 }
 
 .call-to-action {
+  width: 60%;
+  height: 60%;
   margin-left: auto;
   margin-right: auto;
   background: black;
+  opacity: .7;
   color: white;
-  margin-top: 50px;
-  margin-bottom: 20px;
-  padding: 80px;
-  border-color: blue;
-  border-style: none none ridge none;
-
+  padding: 60px;
 
   p {
     margin-left: auto;
@@ -53,7 +56,13 @@
   a {
     margin-left: auto;
     margin-right: auto;
+    opacity: 1;
   }
+}
+
+.massive {
+  font-size: 40px;
+  line-height: 38px;
 }
 
 .call-to-action > p {
@@ -171,7 +180,7 @@ ul.spotless {
 }
 
 .slider {
-  display:none;
+  display: none;
   width: 100%;
   margin-bottom: 40px;
 }
@@ -249,21 +258,90 @@ twitter-typeahead .tt-query,
 }
 
     
-ul.polaroids { width: 100%; margin: 40px 0 18px -20px; }
-ul.polaroids li { display: inline; }
-ul.polaroids a { background: whitesmoke; display: inline; float: left; margin: 0 0 27px 30px; width: auto; padding: 10px 10px 15px; text-align: center; font-family: "Marker Felt", sans-serif; text-decoration: none; color: #333; font-size: 18px; -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25); -moz-box-shadow: 0 3px 6px rgba(0,0,0,.25); -webkit-transform: rotate(-2deg); -webkit-transition: -webkit-transform .15s linear; -moz-transform: rotate(-2deg); }
-ul.polaroids img { display: block; width: 100px; margin-bottom: 12px; }
-ul.polaroids a:after { content: attr(title); }
+ul.polaroids {
+  width: 100%;
+  margin: 40px 0 18px -20px;
+  padding-top: 20px;
 
-ul.polaroids li:nth-child(even) a { -webkit-transform: rotate(2deg);  -moz-transform: rotate(2deg); }
-ul.polaroids li:nth-child(3n) a { -webkit-transform: none; position: relative; top: -5px;  -moz-transform: none; }
-ul.polaroids li:nth-child(5n) a { -webkit-transform: rotate(5deg); position: relative; right: 5px;  -moz-transform: rotate(5deg); }
-ul.polaroids li:nth-child(8n) a { position: relative; right: 5px; top: 8px; }
-ul.polaroids li:nth-child(11n) a { position: relative; left: -5px; top: 3px; }
+  li {
+    display: inline;
 
-ul.polaroids li.messy a { margin-top: -375px; margin-left: 160px; -webkit-transform: rotate(-5deg); -moz-transform: rotate(-5deg); }
+    &:nth-child(even) a {
+      -webkit-transform: rotate(2deg);
+      -moz-transform: rotate(2deg);
+    }
 
-ul.polaroids li a:hover { -webkit-transform: scale(1.25); -moz-transform: scale(1.25); -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5); -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5); position: relative; z-index: 5; }
+    &:nth-child(3n) a {
+      -webkit-transform: none;
+      position: relative;
+      top: -5px;
+      -moz-transform: none; 
+    }
+
+    &:nth-child(5n) a {
+      -webkit-transform: rotate(5deg);
+      position: relative;
+      right: 5px;
+      -moz-transform: rotate(5deg);
+    }
+
+    &:nth-child(8n) a {
+      position: relative;
+      right: 5px;
+      top: 8px;
+    }
+
+    &:nth-child(11n) a {
+      position: relative;
+      left: -5px;
+      top: 3px;
+    }
+
+    .messy a { 
+      margin-top: -375px;
+      margin-left: 160px;
+      -webkit-transform: rotate(-5deg);
+      -moz-transform: rotate(-5deg);
+    }
+
+    a:hover {
+      -webkit-transform: scale(1.25);
+      -moz-transform: scale(1.25);
+      -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+      -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+      position: relative;
+      z-index: 5;
+    }
+  }
+
+  a {
+    background: whitesmoke;
+    display: inline;
+    float: left;
+    margin: 0 0 27px 30px;
+    width: auto;
+    padding: 10px 10px 15px;
+    text-align: center;
+    font-family: "Marker Felt", sans-serif;
+    text-decoration: none; color: #333;
+    font-size: 18px;
+    -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+    -moz-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+    -webkit-transform: rotate(-2deg);
+    -webkit-transition: -webkit-transform .15s linear;
+    -moz-transform: rotate(-2deg);
+
+    &:after {
+      content: attr(title);
+    }
+  }
+
+  img {
+    display: block;
+    width: 100px;
+    margin-bottom: 12px;
+  }
+}
 
 .avatar-top {
   float: right;
@@ -280,4 +358,39 @@ ul.polaroids li a:hover { -webkit-transform: scale(1.25); -moz-transform: scale(
   }
 }
 
+#back_to_top {
+
+}
+
+#team_name {
+  height: 40px;
+  font-size: 22px;
+}
+
+
+.isotope,
+.isotope .isotope-item {
+  /* change duration value to whatever you like */
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
+}
 

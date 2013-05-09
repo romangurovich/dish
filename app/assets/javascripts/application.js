@@ -17,6 +17,7 @@
 //= require backbone-relational
 //= require jquery-fileupload
 //= require typeahead
+//= require isotope
 //= require dish
 //= require_tree ../templates
 //= require_tree ./models

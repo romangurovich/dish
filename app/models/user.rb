@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :victims, through: :teams, source: :owner
 
   has_many :owned_teams, foreign_key: :owner_id, class_name: "Team"
+  has_many :confidantes, through: :owned_teams, source: :members
   has_many :sent_feedback_requests, foreign_key: :requestor_id, class_name: "FeedbackRequest"
   has_many :received_solicited_feedbacks, through: :sent_feedback_requests, source: :solicited_feedbacks
   has_many :received_unsolicited_feedbacks, foreign_key: :recipient_id, class_name: "UnsolicitedFeedback"
@@ -24,21 +25,22 @@ class User < ActiveRecord::Base
   :path => "users/:id/avatar/:style.:extension"
 
 
-  def trusted_people
-    User.find_by_sql(
-      "SELECT users.* FROM users
-      JOIN memberships
-      ON users.id = memberships.member_id
-      JOIN teams
-      ON memberships.team_id = teams.id
-      WHERE teams.owner_id = ?", self.id)
-  end
-
   def avatar_url
     avatar.url(:small)
   end
 
   def as_json(options = nil)
-    super({include: {:victims => {:only => [:id, :username] }, :teams => {:only => [:id]}}}.merge(options || {}))
+    super({include: {
+      :victims => {
+        :only => [:id, :username]
+      },
+      :teams => {
+        :only => [:id]
+      },
+      :confidantes => {
+        :only => [:id, :username],
+        :methods => [:avatar_url]
+      }
+    }}.merge(options || {}))
   end
 end

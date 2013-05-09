@@ -1,14 +1,18 @@
 <div class="new-team-form"
-  <label for="team_name">So...</label>
-  <input type="text" class="monster" id="team_name" name="team[name]">Name your team, fearless leader</input>
+  <label for="team_name">The time has come to name your team</label>
+  <input type="text" class="monster mini-monster" id="team_name" name="team[name]" placeholder="Name your team, fearless leader" />
   
-  <div class="image-bar">
-  <% team_members.each(function(member) { %>
-    <div class="thumbnail">
-      <%= member.escape("username") %>
-    </div>
-  <% }); %>
-  <div>
+  <div class="image-bar slider">
+    <ul class="polaroids">
+    </ul>
+  </div>
+
+  <div class="add_members">
+  </div>
+
+  <p>
+    <button class="btn btn-add-member">One more (team member)</button>
+  </p>
 
   <button class="btn btn-invite">Invite a friend</button>
 

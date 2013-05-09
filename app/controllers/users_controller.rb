@@ -5,11 +5,10 @@ class UsersController < ApplicationController
 	respond_to :html, only: [:index, :new]
 
 	def index
-		@users = User.pluck(:username)
+		@users = User.all
 
 		respond_to do |format|
-			format.json { render json: @users }
-			format.html { render :index }
+			format.json { render json: @users.as_json(:only => [:id, :username], :methods => [:avatar_url]) }
 		end
 	end
 

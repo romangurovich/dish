@@ -62,5 +62,18 @@ Dish.Models.User = Backbone.RelationalModel.extend({
 		collectionOptions: function(user) {
       return { userId: user.id };
     }
-	}]
+	},
+	{
+		type: 'HasMany',
+		key: 'confidantes',
+		relatedModel: 'Dish.Models.Confidante',
+		collectionType: 'Dish.Collections.Confidantes',
+		reverseRelation: {
+			key: 'fool'
+		},
+		collectionOptions: function(user) {
+      return { userId: user.id };
+    }
+	}
+	]
 });

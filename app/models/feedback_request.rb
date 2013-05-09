@@ -7,6 +7,10 @@ class FeedbackRequest < ActiveRecord::Base
   has_many :solicited_feedbacks
 
   def as_json(options = nil)
-    super({include: {:requestor => {:only => :username }}}.merge(options || {}))
+    super({include: {
+      :requestor => {
+        :only => :username 
+      }
+    }}.merge(options || {}))
   end
 end
