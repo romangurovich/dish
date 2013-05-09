@@ -1,32 +1,45 @@
 <%= form_for(@user) do |f| %>
+  <div class="row">
+    <div class="span4">
 
+      <p>
+        <%= f.label :email, "Email Address" %>
+        <%= f.email_field :email %>
+      </p>
 
-<p>
-  <%= f.label :email, "Email Address" %>
-  <%= f.email_field :email %>
-</p>
+      <p>
+        <%= f.label :username, "User Name" %>
+        <%= f.text_field :username %>
+      </p>
 
-<p>
-  <%= f.label :username, "User Name" %>
-  <%= f.text_field :username %>
-</p>
+      <p>
+        <%= f.label :nickname, "Nickname (optional)" %>
+        <%= f.text_field :nickname %>
+      </p>
 
-<p>
-  <%= f.label :password, "Password" %>
-  <%= f.password_field :password %>
-</p>
+    </div>
 
-<p>
-  <%= f.label :password_confirmation, "Confirm Password" %>
-  <%= f.password_field :password_confirmation %>
-</p>
+    <div class="span4">  
+      <p>
+        <%= f.label :password, "Password" %>
+        <%= f.password_field :password %>
+      </p>
 
-<p>
-  <%= f.file_field :avatar %>
-</p>
+      <p>
+        <%= f.label :password_confirmation, "Confirm Password" %>
+        <%= f.password_field :password_confirmation %>
+      </p>
 
-<p>
-  <%= f.submit %>
-</p>
+      <p>
+        <%= f.label :avatar, "Upload an image for your avatar" %>
+        <%= f.file_field :avatar %>
+      </p>
+    </div>
 
+    <div class="span4">
+      <p>
+        <%= f.submit "Sign Up", class: "btn big-btn user-form-btn" %>
+      </p>
+    </div>
+  </div>
 <% end %>

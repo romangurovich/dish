@@ -14,6 +14,10 @@
   }
 }
 
+.pretty-border {
+  border: 1px solid black;
+}
+
 .log_in_toggle {
   margin-right: 10px;
 }
@@ -86,6 +90,13 @@
     background: #F23E7A;
     color: #434E4F;
   }
+}
+
+.user-form-btn {
+  padding: 20px;
+  font-size: 30px;
+  margin-top: 20%;
+  margin-bottom: auto;
 }
 
 select {
