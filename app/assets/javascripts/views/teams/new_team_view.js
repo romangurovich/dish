@@ -1,7 +1,8 @@
 Dish.Views.NewTeamView = Backbone.View.extend({
   events: {
     "click button.submit": "submit",
-    "click button.btn-add-member": "addMember"
+    "click button.btn-add-member": "addMember",
+    "blur .add_team_member": "addMemberId"
   },
 
   initialize: function(args){
@@ -27,31 +28,28 @@ Dish.Views.NewTeamView = Backbone.View.extend({
     
 
     // var confidantes = Dish.Store.currentUser.get('confidantes');
-
    
 
     var addTeamMemberView = new Dish.Views.AddTeamMemberView();
     $('.add_members').append(addTeamMemberView.render().$el)
 
-    // that.membersArray.push(addTeamMemberView);
+    $('.add_team_member').typeahead({
+      name: 'users',
+      // prefetch: '../users.json',
+      valueKey: 'username',
+      // local: [{'username': 'timtrueman', 'id': '1'}, {'username':'JakeHarding', 'id':'2'}],
+      local: Dish.Store.allUsers,
+      limit: 10,
+      template: '<p><img src="{{tiny_url}}"/><strong> {{username}}</strong></p>',
+      engine: Hogan
+    });
 
-    // $('.buttons').before(addTeamMemberView.render().$el)
+    // that.membersArray.push(addTeamMemberView);
   },
 
-  // dropIt: function(){
-  //   var that = this;
-  //   that.$('textarea#feedback_body').text("").addClass("editing");
-    
-  //   $('.slider').slideDown();
-  // },
+  addMemberId: function(e){
 
-  // reset: function(){
-  //  var that = this;
-  //  if(that.$('textarea#feedback_body').val() === ""){
-  //     that.$('textarea#feedback_body').text("Let loose").removeClass("editing").blur();
-  //     $('.slider').slideUp();
-  //   }
-  // },
+  },
 
   submit: function(){
     // var that = this;

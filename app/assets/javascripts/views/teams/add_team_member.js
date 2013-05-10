@@ -14,13 +14,6 @@ Dish.Views.AddTeamMemberView = Backbone.View.extend({
     var renderedContent = JST['teams/add_member']();
 
     that.$el.html(renderedContent);
-
-    $('.add_team.member').typeahead({
-      name: 'users',
-      prefetch: '#/users.json',
-      limit: 10
-    });
-
     return that;
   },
 

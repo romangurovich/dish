@@ -13,6 +13,7 @@ window.Dish = {
     this.teams = new Dish.Collections.Teams(this.teamsData); 
     this.sentFeedbackRequests = new Dish.Collections.FeedbackRequests(this.sentFeedbackRequestsData);
     this.receivedFeedbackRequests = new Dish.Collections.FeedbackRequests(this.receivedFeedbackRequestsData);
+    Dish.Store.allUsers = new Dish.Collections.Users(this.allUsersData);
     
     this.install_nav_pane();
     this.install_teams_pane();

@@ -4,7 +4,6 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 		"feedback_requests/:id" : "showFeedbackRequest",
 		"messages": "unsolicitedFeedbacksIndex",
 		"confidantes": "trustedUsers",
-		"teams": "teams",
 		"feedbacks": "sentFeedbacks",
 		"teams/new": "newTeam",
 		"teams/:id": "showTeam"
@@ -37,11 +36,23 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 		var that = this;
 
 		var feedbackRequest = that.receivedFeedbackRequests.get(id) || that.sentFeedbackRequests.get(id);
+		// if (	(Dish.Store.currentUser.get("id") === feedbackRequest.get("requestor_id")) ||
+		// 			(Dish.Store.currentUser.get("teams").contains(feedbackRequest.get("team"))	) {
+
+
+
+
+		// } else {
+		// 	var errorView = new Dish.Views.ErrorView({
+		// 		error: "Unauthorized to see this section"
+		// 	});
+
+		// 	that.$content.html(errorView.render.html();
+		// }
+
 		var receivedFeedbacks = feedbackRequest.get('solicitedFeedbacks');
 		receivedFeedbacks.fetch({
 			success: function(){
-				console.log(receivedFeedbacks.models);
-
 				var showFeedbackRequestView = new Dish.Views.ShowFeedbackRequestView ({
 					model: feedbackRequest
 				});
@@ -76,16 +87,6 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 		});		
 	},
 
-	teams: function (){
-		var that = this;
-
-		var teamsIndexView = new Dish.Views.TeamsIndexView ({
-			collection: that.teams
-		});
-
-		that.$content.html(teamsIndexView.render().el);
-	},
-
 	sentFeedbacks: function() {
 		var that = this;
 
@@ -93,34 +94,31 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 		unsolicitedFeedbacks.fetch({
 			success: function(){
 				var sentFeedbacksView = new Dish.Views.SentFeedbacksView ({
-					collection: unsolicitedFeedbacks,
-					sentFeedbacks: new Dish.Collections.UnsolicitedFeedbacks(unsolicitedFeedbacks.sent())
+					collection: unsolicitedFeedbacks
 				});
 				
 				that.$content.html(sentFeedbacksView.render().el);
 
-				var victims = _.uniq(that.user.get("victims"));
+				var victims = that.user.get("victims");
+				victims.fetch({
+					success: function(){
+						var newFeedbackView = new Dish.Views.NewFeedbackView ({
+							collection: unsolicitedFeedbacks,
+							currentUser: that.user,
+							victims: victims
+						});
 
-				console.log(that.user.get("victims"));
-
-				var newFeedbackView = new Dish.Views.NewFeedbackView ({
-					collection: unsolicitedFeedbacks,
-					currentUser: that.user,
-					victims: victims
+						that.$content.prepend(newFeedbackView.render().el);
+					}
 				});
-
-				that.$content.prepend(newFeedbackView.render().el);
 			}
 		});
-
-
 	},
 
 	trustedUsers: function(){
 		var that = this;
 
 		var confidantes = that.user.get("confidantes");
-		console.log(confidantes);
 		confidantes.fetch({
 			success: function(){
 				var confidantesIndexView = new Dish.Views.ConfidantesIndexView ({
@@ -135,7 +133,6 @@ Dish.Routers.AppRouter = Backbone.Router.extend({
 		var that = this;
 
 		var team = that.teams.get(id);
-		console.log(team);
 		var members = team.get("members");
 
 		var showTeamView = new Dish.Views.ShowTeamView({

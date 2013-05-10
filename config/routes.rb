@@ -8,6 +8,7 @@ Dish::Application.routes.draw do
     resources :votes, only: [:create, :new]
   end
 
+  resources :victims, only: [:index]
   resources :confidantes, only: [:index]
 
   resources :teams do

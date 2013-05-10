@@ -29,17 +29,14 @@ class User < ActiveRecord::Base
     avatar.url(:small)
   end
 
+  def tiny_url
+    avatar.url(:thumb)
+  end
+
   def as_json(options = nil)
-    super({include: {
-      :victims => {
-        :only => [:id, :username]
-      },
+    super({:only => [:id, :username], :methods => [:tiny_url], include: {
       :teams => {
         :only => [:id]
-      },
-      :confidantes => {
-        :only => [:id, :username],
-        :methods => [:avatar_url]
       }
     }}.merge(options || {}))
   end

@@ -7,7 +7,6 @@ Dish.Views.ShowTeamView = Backbone.View.extend({
   initialize: function(args){
     args = args || {};
     _(this).extend(args);
-    console.log(args);
   },
 
   render: function(){

@@ -64,6 +64,10 @@ GEM
       bundler (~> 1.0)
       rails (>= 3, < 5)
     hike (1.2.2)
+    hogan_assets (1.6.0)
+      execjs (>= 1.2.9)
+      sprockets (>= 2.0.3)
+      tilt (>= 1.3.3)
     httparty (0.11.0)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
@@ -160,6 +164,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   ejs
   figaro
+  hogan_assets
   jquery-fileupload-rails
   jquery-rails
   paperclip

@@ -11,7 +11,6 @@ Dish.Views.NewSolicitedFeedbackView = Backbone.View.extend({
   render: function(){
     var that = this;
 
-    console.log(this.model);
     if (Dish.Store.currentUser.get("username") == this.model.get("requestor").get("username")){
       var renderedContent = "";
     } else {

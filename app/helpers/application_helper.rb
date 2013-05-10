@@ -4,7 +4,7 @@ module ApplicationHelper
 		html << "<div class='navbar navbar-fixed-top dish-header'>"
 		html << "<div class='navbar-inner'>"
 		html << "<h1>"
-		html << "<a class='page-title' href='" + root_url.html_safe + "'>DISH.IO</a>"
+		html << "<a class='page-title' href='" + root_url.html_safe + "#/'>DISH.IO</a>"
 		html << make_avatar
 		html << "</h1>"
 		html << "<div class='pull-left searchy'>"

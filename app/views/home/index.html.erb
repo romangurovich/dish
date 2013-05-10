@@ -1,15 +1,18 @@
 <div class="row">
 	<div class="span2">
-    <div id="nav-pane">nav</div>
-    <div id="teams-pane">teams</div>
+    <div id="nav-pane"></div>
+    <div id="teams-pane"></div>
   </div>
-	<div id="main-pane" class="span8">main</div>
-	<div id="requests-pane" class="span2">requests</div>
+	<div id="main-pane" class="span8"></div>
+	<div id="requests-pane" class="span2"></div>
   <a class="btn big-btn super-wide" id="back_to_top" href="#top">back to top</a>
 </div>
 
 <script>
 $(document).ready(function(){
+
+  
+  var allUsers = <%= User.all.to_json.html_safe %>;
 
   Dish.initialize({
     $nav: $('#nav-pane'),
@@ -20,15 +23,19 @@ $(document).ready(function(){
     userData: <%= current_user.to_json.html_safe %>,
     teamsData: <%= current_user.owned_teams.to_json.html_safe %>,
     receivedFeedbackRequestsData: <%= current_user.received_feedback_requests.to_json.html_safe %>,
-    sentFeedbackRequestsData: <%= current_user.sent_feedback_requests.to_json.html_safe %>
+    sentFeedbackRequestsData: <%= current_user.sent_feedback_requests.to_json.html_safe %>,
+    allUsersData: allUsers
   });
 
   $('.user-search').typeahead({
     name: 'users',
-    prefetch: '../users.json',
-    limit: 10
-    // template: '<p><strong>{{username}}</strong></p>',
-    // engine: Hogan
+    // prefetch: '../users.json',
+    valueKey: 'username',
+    // local: [{'username': 'timtrueman', 'id': '1'}, {'username':'JakeHarding', 'id':'2'}],
+    local: allUsers,
+    limit: 10,
+    template: '<p><img src="{{tiny_url}}"/><strong> {{username}}</strong></p>',
+    engine: Hogan
   });
 
   $('a').on("click", function(){
@@ -37,12 +44,8 @@ $(document).ready(function(){
 
   $(window).on("scroll ready resize", function(){
     var h = $('.container').height();
-    // var y = $(window).scrollTop();
     var w = $(window).height();
-    // var t = $('#back_to_top').position().top
     if (h > w) {
-
-    // if( y > (h*.5) ){
       $("#back_to_top").show();
     } else {
       $('#back_to_top').hide();
@@ -50,9 +53,14 @@ $(document).ready(function(){
   });
 
   $("a[href='#top']").click(function() {
-  $("html, body").animate({ scrollTop: 0 }, "slow");
+    $("html, body").animate({ scrollTop: 0 }, "slow");
     return false;
   });
 
+  $(".glower li,.glower-mini li").on ('click', function(e) {
+    console.log("123");
+    // window.location = $('a',this).attr('href');
+    Backbone.history.navigate($('a',this).attr('href'));
+  });
 });
 </script>

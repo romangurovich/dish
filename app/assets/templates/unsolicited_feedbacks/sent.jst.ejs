@@ -1,12 +1,14 @@
-<p class="lead">Unprompted personal attacks. Go you!</p>
+<p class="lead titled">Unprompted personal attacks. Go you!</p>
 <ul class="spotless">
-<% sentUnsolicitedFeedbacks.each(function (feedback) { %>
+<% _(sentUnsolicitedFeedbacks).each(function (feedback) { %>
   <li class="well lead">
-    <a href="<%= '#/feedbacks/' + feedback.id %>">
-      <%= feedback.escape('body') %>
-    </a>
     <p>
-      sent to <%= feedback.escape('recipient_id') %>
+      <%= feedback.escape('body') %>
+    </p>
+    <p>
+      <small>
+        sent to <%= feedback.get('recipient').escape('username') %>
+      </small>
     </p>
   </li>
 <% }); %>

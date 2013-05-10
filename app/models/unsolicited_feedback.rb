@@ -11,4 +11,12 @@ class UnsolicitedFeedback < ActiveRecord::Base
     where(unsolicited_feedbacks[:author_id].eq(user_id).or(unsolicited_feedbacks[:recipient_id].eq(user_id)))
   end
 
+  def as_json(options = nil)
+    super({:except => [:author_id], include: {
+      :recipient => {
+        :only => [:id, :username]
+      },
+    }}.merge(options || {}))
+  end
+
 end

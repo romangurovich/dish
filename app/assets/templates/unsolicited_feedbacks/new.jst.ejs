@@ -4,8 +4,8 @@
   <div class="slider">
     <label for="feedback_recipient">Who's the victim?</label>
     <select class=feedback_[recipient_id] id="feedback_recipient_id">
-      <% _(victims).each(function(victim) { %>
-        <option value="<%= victim.id %>"><%= victim.username %></option>
+      <% victims.each(function(victim) { %>
+        <option value="<%= victim.escape("id") %>"><%= victim.escape("username") %></option>
       <% }); %>
     </select>
     <button class="submit btn btn-inverse bold-btn">Dish</button>

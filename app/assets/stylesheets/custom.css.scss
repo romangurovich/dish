@@ -1,9 +1,5 @@
 @import 'bootstrap';
 
-.pink {
-
-}
-
 .navbar-inner {
   h1 {
     margin-left: 10px;
@@ -153,7 +149,45 @@ ul.spotless {
   padding: 0px;
   margin: 0px;
   li {
-    postion: relative;
+    position: relative;
+  }
+}
+
+ul.glower {
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+    
+  li {
+    &:hover {
+      -webkit-transform: scale(1.2);
+      -moz-transform: scale(1.2);
+      -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+      -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+      cursor: pointer;
+    }
+  }
+}
+
+ul.glower-mini {
+  a {
+    height: 100%;
+    width: 100%;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+    
+  li {
+    &:hover {
+      -webkit-transform: scale(1.04);
+      -moz-transform: scale(1.04);
+      -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+      -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+      cursor: pointer;
+    }
   }
 }
 
@@ -266,6 +300,7 @@ twitter-typeahead .tt-query,
   margin-top: 20px;
   padding: 10px;
   font-size: 32px;
+  opacity: .8;
 }
 
     
@@ -315,42 +350,42 @@ ul.polaroids {
       -moz-transform: rotate(-5deg);
     }
 
-    a:hover {
-      -webkit-transform: scale(1.25);
-      -moz-transform: scale(1.25);
-      -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5);
-      -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5);
-      position: relative;
-      z-index: 5;
+    a {
+      background: whitesmoke;
+      display: inline;
+      float: left;
+      margin: 0 0 27px 30px;
+      width: auto;
+      padding: 10px 10px 15px;
+      text-align: center;
+      font-family: "Marker Felt", sans-serif;
+      text-decoration: none; color: #333;
+      font-size: 18px;
+      -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+      -moz-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+      -webkit-transform: rotate(-2deg);
+      -webkit-transition: -webkit-transform .15s linear;
+      -moz-transform: rotate(-2deg);
+
+      &:after {
+        content: attr(title);
+      }
+
+      &:hover {
+        -webkit-transform: scale(1.25);
+        -moz-transform: scale(1.25);
+        -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+        -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+        position: relative;
+        z-index: 5;
+      }
     }
-  }
 
-  a {
-    background: whitesmoke;
-    display: inline;
-    float: left;
-    margin: 0 0 27px 30px;
-    width: auto;
-    padding: 10px 10px 15px;
-    text-align: center;
-    font-family: "Marker Felt", sans-serif;
-    text-decoration: none; color: #333;
-    font-size: 18px;
-    -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
-    -moz-box-shadow: 0 3px 6px rgba(0,0,0,.25);
-    -webkit-transform: rotate(-2deg);
-    -webkit-transition: -webkit-transform .15s linear;
-    -moz-transform: rotate(-2deg);
-
-    &:after {
-      content: attr(title);
+    img {
+      display: block;
+      width: 100px;
+      margin-bottom: 12px;
     }
-  }
-
-  img {
-    display: block;
-    width: 100px;
-    margin-bottom: 12px;
   }
 }
 
@@ -369,9 +404,6 @@ ul.polaroids {
   }
 }
 
-#back_to_top {
-
-}
 
 #team_name {
   height: 40px;
@@ -403,5 +435,10 @@ ul.polaroids {
       -ms-transition-property:     -ms-transform, opacity;
        -o-transition-property:      -o-transform, opacity;
           transition-property:         transform, opacity;
+}
+
+.titled {
+  border-bottom: ridge;
+  border-color: #434E4F;
 }
 

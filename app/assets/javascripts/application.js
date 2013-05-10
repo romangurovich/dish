@@ -15,7 +15,7 @@
 //= require underscore
 //= require backbone
 //= require backbone-relational
-//= require jquery-fileupload
+//= require hogan.js
 //= require typeahead
 //= require isotope
 //= require dish

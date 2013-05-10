@@ -8,8 +8,10 @@ Dish.Views.SentFeedbacksView = Backbone.View.extend({
   render: function() {
     var that = this;
 
+    var sentUnsolicitedFeedbacks = that.collection.sent();
+    
     var renderedContent = JST['unsolicited_feedbacks/sent']({
-      sentUnsolicitedFeedbacks: that.sentFeedbacks
+      sentUnsolicitedFeedbacks: sentUnsolicitedFeedbacks
     });
 
     that.$el.html(renderedContent);
